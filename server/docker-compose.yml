@@ -1,5 +1,6 @@
 # NAS 拉取模式：不本地 build，只拉 Docker Hub 镜像
-# 用法：改 TOKEN → docker compose pull && docker compose up -d
+# 1. 复制 .env.example 为 .env，填写 TOKEN
+# 2. docker compose pull && docker compose up -d
 services:
   forward-bridge:
     image: poillysky/rex:latest
@@ -10,9 +11,8 @@ services:
       - "8787:8787"
     environment:
       PORT: "8787"
-      # 必改：访问口令；黄果封面 / 黄豆 / 野果请求需带 &k=口令
-      TOKEN: "改成你自己的口令"
-      # 若 NAS 访问站源需要代理，取消下面两行注释并改成你的代理
-      # HTTP_PROXY: "http://192.168.2.1:7897"
-      # HTTPS_PROXY: "http://192.168.2.1:7897"
-      # NODE_USE_ENV_PROXY: "1"
+      TOKEN: "${TOKEN}"
+      # 若 NAS 访问站源需要代理，在 .env 里设 HTTP_PROXY / HTTPS_PROXY
+      HTTP_PROXY: "${HTTP_PROXY:-}"
+      HTTPS_PROXY: "${HTTPS_PROXY:-}"
+      NODE_USE_ENV_PROXY: "${NODE_USE_ENV_PROXY:-}"

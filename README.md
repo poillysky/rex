@@ -41,8 +41,8 @@
 镜像：[`poillysky/rex`](https://hub.docker.com/r/poillysky/rex)（GitHub Actions 自动构建推送）。  
 `docker-compose.yml` 为 **纯拉取模式**（`pull_policy: always`，无 `build`）。
 
-1. 把 `server/docker-compose.yml` 放到 NAS（群晖 Container Manager 等可直接选该文件）。
-2. 编辑 `TOKEN` 为你的口令；需要代理时按文件内注释打开 `HTTP_PROXY`。
+1. 把 `server/docker-compose.yml` 与 `.env` 放到同一目录（可先复制 `.env.example` 为 `.env`）。
+2. 在 `.env` 里填写 `TOKEN=你的口令`（不要把真实口令提交到 Git）。
 3. 执行：
 
    ```bash
