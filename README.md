@@ -36,12 +36,13 @@
 | `GET /hd/catalog|search|detail|play` | 黄豆加密 API 桥 |
 | `GET /yg/catalog|search|detail|play` | 野果加密 API 桥 |
 
-### Docker（群晖 / 威联通 / 绿联 / 飞牛等）
+### Docker / NAS 拉取（推荐）
 
-镜像已推送到 Docker Hub：[`poillysky/rex`](https://hub.docker.com/r/poillysky/rex)（由 GitHub Actions 用仓库密钥 `DOCKERHUB` 自动构建推送）。
+镜像：[`poillysky/rex`](https://hub.docker.com/r/poillysky/rex)（GitHub Actions 自动构建推送）。  
+`docker-compose.yml` 为 **纯拉取模式**（`pull_policy: always`，无 `build`）。
 
-1. 只需 `server/docker-compose.yml`（或整份 `server/`）。
-2. 编辑其中的 `TOKEN` 为你的口令。
+1. 把 `server/docker-compose.yml` 放到 NAS（群晖 Container Manager 等可直接选该文件）。
+2. 编辑 `TOKEN` 为你的口令；需要代理时按文件内注释打开 `HTTP_PROXY`。
 3. 执行：
 
    ```bash
@@ -51,12 +52,7 @@
 
 4. 浏览器打开 `http://NAS的IP:8787/health`，看到 `ok` 即成功。
 
-本地改代码再构建：
-
-```bash
-docker compose -f docker-compose.yml build
-# 或：docker build -t poillysky/rex:latest .
-```
+更新镜像：再执行一次 `docker compose pull && docker compose up -d`。
 
 ### 直接用 Node
 
