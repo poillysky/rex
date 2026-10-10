@@ -2,10 +2,10 @@
 # 1. 复制 .env.example 为 .env，填写 TOKEN
 # 2. docker compose pull && docker compose up -d
 services:
-  forward-bridge:
-    image: poillysky/rex:latest
+  rex-bridge:
+    image: poillysky/rex:1.0.1
     pull_policy: always
-    container_name: forward-bridge
+    container_name: rex-bridge
     restart: unless-stopped
     ports:
       - "8787:8787"

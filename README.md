@@ -38,8 +38,8 @@
 
 ### Docker / NAS 拉取（推荐）
 
-镜像：[`poillysky/rex`](https://hub.docker.com/r/poillysky/rex)（GitHub Actions 自动构建推送）。  
-`docker-compose.yml` 为 **纯拉取模式**（`pull_policy: always`，无 `build`）。
+镜像：[`poillysky/rex`](https://hub.docker.com/r/poillysky/rex)（打 `v*` 标签时 Actions 推送版本号 + `latest`）。  
+当前 compose 固定：`poillysky/rex:1.0.1`，容器名 `rex-bridge`，`pull_policy: always`。
 
 1. 把 `server/docker-compose.yml` 与 `.env` 放到同一目录（可先复制 `.env.example` 为 `.env`）。
 2. 在 `.env` 里填写 `TOKEN=你的口令`（不要把真实口令提交到 Git）。
@@ -52,7 +52,7 @@
 
 4. 浏览器打开 `http://NAS的IP:8787/health`，看到 `ok` 即成功。
 
-更新镜像：再执行一次 `docker compose pull && docker compose up -d`。
+更新到新版本：改 compose 里的镜像标签后，再 `docker compose pull && docker compose up -d`。
 
 ### 直接用 Node
 
