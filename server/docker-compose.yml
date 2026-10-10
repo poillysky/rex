@@ -1,0 +1,11 @@
+services:
+  forward-bridge:
+    # 默认拉 Docker Hub 镜像；本地改代码可改回 build: .
+    image: poillysky/rex:latest
+    container_name: forward-bridge
+    restart: unless-stopped
+    ports:
+      - "8787:8787"
+    environment:
+      # 建议设置一个口令；黄果封面 / 黄豆 / 野果请求需带 &k=口令
+      TOKEN: "改成你自己的口令"
