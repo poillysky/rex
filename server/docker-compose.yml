@@ -6,11 +6,11 @@ services:
     image: poillysky/rex:1.0.1
     pull_policy: always
     container_name: rex-bridge
-    restart: unless-stopped
+    restart: always
     ports:
-      - "8787:8787"
+      - "7787:7787"
     environment:
-      PORT: "8787"
+      PORT: "7787"
       TOKEN: "${TOKEN}"
       # 若 NAS 访问站源需要代理，在 .env 里设 HTTP_PROXY / HTTPS_PROXY
       HTTP_PROXY: "${HTTP_PROXY:-}"

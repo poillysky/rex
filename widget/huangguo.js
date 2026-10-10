@@ -16,7 +16,7 @@ WidgetMetadata = {
   site: "https://github.com/InchStudio/ForwardWidgets",
   detailCacheDuration: 300,
   globalParams: [
-    { name: "coverProxy", title: "封面代理地址（可选，如 http://192.168.1.10:8787）", type: "input", value: "" },
+    { name: "coverProxy", title: "封面代理地址（可选，如 http://192.168.1.10:7787）", type: "input", value: "" },
     { name: "coverToken", title: "封面代理口令（可选）", type: "input", value: "" },
   ],
   modules: [

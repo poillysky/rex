@@ -1,6 +1,6 @@
 /**
  * 野果 Forward 脚本（独立）
- * 经 NAS 桥接加密 API：填写 bridge = http://NAS:8787
+ * 经 NAS 桥接加密 API：填写 bridge = http://NAS:7787
  * link： yeguo|<id>  /  yeguo|<id>|<episode_id>|<集号>
  * 封面：接口直链
  */
@@ -15,7 +15,7 @@ WidgetMetadata = {
   site: "https://github.com/InchStudio/ForwardWidgets",
   detailCacheDuration: 300,
   globalParams: [
-    { name: "bridge", title: "桥接地址（必填，如 http://192.168.1.10:8787）", type: "input", value: "" },
+    { name: "bridge", title: "桥接地址（必填，如 http://192.168.1.10:7787）", type: "input", value: "" },
     { name: "bridgeToken", title: "桥接口令（可选，与服务 TOKEN 一致）", type: "input", value: "" },
   ],
   modules: [
@@ -77,7 +77,7 @@ function withToken(url, params) {
 
 async function bridgeGet(path, params) {
   var base = bridgeBase(params);
-  if (!base) throw new Error("请先在模块设置里填写桥接地址（NAS 上的 :8787 服务）");
+  if (!base) throw new Error("请先在模块设置里填写桥接地址（NAS 上的 :7787 服务）");
   var url = withToken(base + path, params);
   var res = await Widget.http.get(url, {
     headers: { "User-Agent": UA, Accept: "application/json" },

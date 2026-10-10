@@ -50,7 +50,7 @@
    docker compose up -d
    ```
 
-4. 浏览器打开 `http://NAS的IP:8787/health`，看到 `ok` 即成功。
+4. 浏览器打开 `http://NAS的IP:7787/health`，看到 `ok` 即成功。
 
 更新到新版本：改 compose 里的镜像标签后，再 `docker compose pull && docker compose up -d`。
 
@@ -65,7 +65,7 @@ TOKEN=你的口令 node server.js
 
 | 变量 | 默认 | 说明 |
 | --- | --- | --- |
-| `PORT` | `8787` | 监听端口 |
+| `PORT` | `7787`（compose 已固定） | 监听端口 |
 | `TOKEN` | 空 | 访问口令；设置后请求需带 `&k=口令`，**建议设置** |
 | `ALLOW_HOSTS` | `pic.wirqed.cn,expose.eisees.com` | 封面代理白名单域名 |
 | `COVER_KEY` / `COVER_IV` | 内置 | 黄果封面密钥（站点换钥时覆盖） |
@@ -82,7 +82,7 @@ TOKEN=你的口令 node server.js
 
 模块设置：
 
-- **封面代理地址**：`http://NAS的IP:8787`（不要末尾 `/`）
+- **封面代理地址**：`http://NAS的IP:7787`（不要末尾 `/`）
 - **封面代理口令**：与 `TOKEN` 一致；没设就留空
 
 不填也能播，只是黄果 AI 列表可能没有封面。黄果视频封面不受影响。
@@ -91,7 +91,7 @@ TOKEN=你的口令 node server.js
 
 模块设置（必填）：
 
-- **桥接地址**：`http://NAS的IP:8787`
+- **桥接地址**：`http://NAS的IP:7787`
 - **桥接口令**：与 `TOKEN` 一致；没设就留空
 
 ---
@@ -100,7 +100,7 @@ TOKEN=你的口令 node server.js
 
 局域网 IP 只在家里能用。外网需要：
 
-- 内网穿透 / 反代 / DDNS 暴露 `8787`，并**务必设置 `TOKEN`**
+- 内网穿透 / 反代 / DDNS 暴露 `7787`，并**务必设置 `TOKEN`**
 - 或 Tailscale / ZeroTier 组网后继续用内网地址
 
 iOS 对纯 `http` 有时会限制；若只在 App 里封面/桥接失败，可给服务套一层 `https`。
@@ -110,10 +110,10 @@ iOS 对纯 `http` 有时会限制；若只在 App 里封面/桥接失败，可�
 ## 常见问题
 
 **Q：黄豆/野果提示「请先填写桥接地址」？**  
-模块设置里填 `http://NAS:8787`，保存后刷新列表。
+模块设置里填 `http://NAS:7787`，保存后刷新列表。
 
 **Q：黄果 AI 封面不显示？**  
-1. 浏览器打开 `http://NAS:8787/health` 是否 `ok`  
+1. 浏览器打开 `http://NAS:7787/health` 是否 `ok`  
 2. 口令是否与 `TOKEN` 一致  
 3. 地址不要带结尾 `/`，也不要误写成 `https`（除非你配了证书）
 
